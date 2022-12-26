@@ -1,0 +1,6 @@
+local Fling = Instance.new("BodyGyro")
+Fling.P = 0
+Fling.D = -90
+Fling.CFrame = CFrame.new(90000000,9000000000,0)
+Fling.Parent = game.Players.LocalPlayer.Character.Head
+Fling.MaxTorque = Vector3.new(0,-9000,0)
