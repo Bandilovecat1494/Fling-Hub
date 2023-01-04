@@ -21,6 +21,26 @@ Fling.CFrame = CFrame.new(9000000000,9000000000,9000000000)
 Fling.Parent = Humanoid
 local Input = game.UserInputService
 
+function Gitch()
+		local RL = game.Players.LocalPlayer.Character["Right Leg"]["att1_Right Leg"].Position
+		local RA = game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Position
+		local LL = game.Players.LocalPlayer.Character["Left Leg"]["att1_Left Leg"].Position
+		local LA = game.Players.LocalPlayer.Character["Left Arm"]["att1_Left Arm"].Position
+		game.Players.LocalPlayer.Character["Left Arm"]["att1_Left Arm"].Position =Vector3.new(math.random(-1,1),math.random(-1,1),math.random(-1,1)) 
+		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Position = Vector3.new(math.random(-1,1),math.random(-1,1),math.random(-1,1))
+		game.Players.LocalPlayer.Character["Left Leg"]["att1_Left Leg"].Position =Vector3.new(math.random(-1,1),math.random(-1,1),math.random(-1,1)) 
+		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Leg"].Position = Vector3.new(math.random(-1,1),math.random(-1,1),math.random(-1,1))
+		wait(0.1)
+		game.Players.LocalPlayer.Character["Left Arm"]["att1_Left Arm"].Position = LA
+		
+		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Position = RA
+		
+		game.Players.LocalPlayer.Character["Left Leg"]["att1_Left Leg"].Position = LL
+		
+		game.Players.LocalPlayer.Character["Right Leg"]["att1_Right Leg"].Position = RL
+end
+
+
 Fling.MaxTorque = Vector3.new(0,-900000,0)
 		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Position = Vector3.new(0,1,0)
 		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Orientation =Vector3.new(-170,0,20) 
@@ -67,3 +87,10 @@ end)
    game.Players.LocalPlayer.CharacterAdded:Connect(function()
 	Added = true
 end)
+
+
+
+while true do
+   wait(math.random(2,5))
+   Gitch()
+end
