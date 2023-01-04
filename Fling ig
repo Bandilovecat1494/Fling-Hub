@@ -1,0 +1,34 @@
+wait(1)
+local Added = false
+local Model = game.Players.LocalPlayer.Character.Model
+local FlingType = true --Since Noone will edit this hopefully i leave it on true and not custom ones
+local Mouse = game.Players.LocalPlayer:GetMouse().Button1Down
+local Body = "HumanoidRootPart"
+local Humanoid = Model:WaitForChild(Body)
+Humanoid.att0_HumanoidRootPart.AlignOrientation:Destroy()
+local Hoster = Instance.new("SelectionBox")
+Hoster.Visible = true
+Hoster.Parent = Humanoid
+Hoster.Color3 = Color3.fromRGB(151, 104, 185)
+Hoster.LineThickness = 0.02
+Hoster.Adornee = Humanoid
+local Fling = Instance.new("BodyGyro")
+Fling.P = 1
+Fling.D = -120
+Fling.CFrame = CFrame.new(9000000000,9000000000,9000000000)
+Fling.Parent = Humanoid
+Fling.MaxTorque = Vector3.new(-9000,-90000,-90000)
+Mouse:Connect(function(a)
+	if Added == false then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.att1_HumanoidRootPart.WorldCFrame = game.Players.LocalPlayer:GetMouse().Hit
+		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Position = Vector3.new(0,0.5,-0.5)
+		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Orientation =Vector3.new(90,0,0) 
+		wait(0.2)
+		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Position = Vector3.new(0,0,0)
+		game.Players.LocalPlayer.Character["Right Arm"]["att1_Right Arm"].Orientation =Vector3.new(0,0,0) 
+		game.Players.LocalPlayer.Character.HumanoidRootPart.att1_HumanoidRootPart.Position = Vector3.new(0,0,0)
+	end		
+end)
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+	Added = true
+end)
