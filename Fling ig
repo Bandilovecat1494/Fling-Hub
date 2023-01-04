@@ -1,10 +1,10 @@
 wait(0.04)
+local Body = "HumanoidRootPart"
+local Humanoid = Model:WaitForChild(Body)
 local Added = false
 local Model = game.Players.LocalPlayer.Character.Model
 local FlingType = true --Since Noone will edit this hopefully i leave it on true and not custom ones
 local Mouse = game.Players.LocalPlayer:GetMouse().Button1Down
-local Body = "HumanoidRootPart"
-local Humanoid = Model:WaitForChild(Body)
 Humanoid.att0_HumanoidRootPart.AlignOrientation:Destroy()
 local Hoster = Instance.new("SelectionBox")
 Hoster.Visible = true
@@ -51,8 +51,17 @@ Input.InputBegan:Connect(function(Key,Idk)
         end
 	end
 end)
-game.Players.LocalPlayer.CharacterAdded:Connect(function()
+
+
+local HatRequire = game.Players.LocalPlayer.Character.Model.InternationalFedora
+HatRequire.Handle.SpecialMesh:Destroy()
+local Hat2 = game.Players.LocalPlayer.Character.InternationalFedora
+game:GetService("RunService").Heartbeat:Connect(function()
+    if Added == false then
+        Hat2.Handle.att1_Handle.WorldCFrame = game.Players.LocalPlayer.Character.Model.HumanoidRootPart.CFrame
+    end
+
+end)
+   game.Players.LocalPlayer.CharacterAdded:Connect(function()
 	Added = true
 end)
-
-
